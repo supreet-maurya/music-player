@@ -3,7 +3,7 @@ let songs;
 let currentFolder;
 async function getSongs(folder) {
     currentFolder = folder;
-    let a = await fetch(`http://127.0.0.1:5500/${folder}/`);
+    let a = await fetch(`https://supreet-maurya.github.io/music-player/${folder}/`);
     if (!a.ok) {
         throw new Error(`HTTP error! status: ${a.status}`);
     }
@@ -74,7 +74,7 @@ function secondsToMinutesSeconds(seconds) {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`http://127.0.0.1:5500/songs/`);
+    let a = await fetch(`https://supreet-maurya.github.io/music-player/songs/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -88,7 +88,7 @@ async function displayAlbums() {
         if (e.href.split("/").slice(-2)[0] == "songs") {
             let folder = e.href.split("/").slice(-2)[1];
 
-            let dynamic_a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
+            let dynamic_a = await fetch(`https://supreet-maurya.github.io/music-player/songs/${folder}/info.json`);
             let response = await dynamic_a.json();
             cardContainer.innerHTML += `<div data-folder = "${folder}" class="card rounded">
                         <div class="play toggle">
